@@ -1,8 +1,8 @@
 name: Build
 
 on:
-  schedule:
-    - cron: 6 */8 * * *
+  #schedule:
+  # - cron: 6 */8 * * *
   #  push:
   #    branches:
   #      - main
@@ -92,10 +92,16 @@ jobs:
           echo "修改版本信息"
           version_code=$(git rev-list --count HEAD)
           echo "版本号: $version_code, 版本名: ${{ env.tag }}"
-          sed -i "/   versionCode/c\\versionCode ${version_code}" ./app/build.gradle
-          sed -i "/   versionName/c\\versionName '${{ env.tag }}'" ./app/build.gradle
-          sed -i "/   applicationId/c\\applicationId '${{ matrix.userName }}.tvbox.osc'" ./app/build.gradle
-          sed -i "/android:text=/c\\        android:text=\"v${{ env.tag }}\\\\n本软件只提供聚合展示功能，所有资源来自网上, 软件不参与任何制作, 上传, 储存, 下载等内容。 软件仅供学习参考, 请于安装后24小时内删除。\\\\n\\\\n打包分发请保留出处\\\\n${{ matrix.repoUrl }}\"" ./app/src/main/res/layout/dialog_about.xml
+          sed -i "/versionCode/c\\versionCode ${version_code}" ./app/build.gradle
+          sed -i "/versionName/c\\versionName '${{ env.tag }}'" ./app/build.gradle
+          sed -i "/applicationId/c\\applicationId '${{ matrix.userName }}.tvbox.osc'" ./app/build.gradle
+          #sed -i "/applicationId/c\\applicationId '${{ matrix.userName }}.tvbox.osc.tk'" ./app/build.gradle
+          sed -i "/android:text=/c\\android:text=\"v${{ env.tag }}\\\\n本软件只提供聚合展示功能，所有资源来自网上, 软件不参与任何制作, 上传, 储存, 下载等内容。 软件仅供学习参考, 请于安装后24小时内删除。\\\\n\\\\n打包分发请保留出处\\\\n${{ matrix.repoUrl }}\"" ./app/src/main/res/layout/dialog_about.xml
+          #sed -i 's/TVBox/苹果影视/g' ./app/src/main/res/values/strings.xml
+          #sed -i 's/TVBox/熊猫影视/g' ./app/src/main/res/values/strings.xml
+          #sed -i 's/TVBox/熊猫影视/g' ./app/src/main/res/values-zh/strings.xml
+          #sed -i "/android:label=/c\\android:label=\"苹果影视\"" ./app/src/main/AndroidManifest.xml
+          #sed -i "/android:text=/c\\android:text=\"苹果影视\"" ./app/src/main/res/layout/activity_home.xml
           echo "fix crosswalk library"
           if grep -q 'crosswalk' build.gradle; then
             sed -i "/crosswalk/a\   maven { url 'https://celetor.github.io/crosswalk/releases/crosswalk/android/maven2' }\n maven { url 'https://maven.aliyun.com/repository/jcenter' }" build.gradle
