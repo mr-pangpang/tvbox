@@ -4,7 +4,7 @@
 [![Download](https://img.shields.io/github/v/release/mr-pangpang/tvbox-build?color=orange&logoColor=orange&label=Download&logo=DocuSign)](https://github.com/mr-pangpang/tvbox-build/releases/latest) 
 [![Total](https://shields.io/github/downloads/mr-pangpang/tvbox-build/total?logo=Bookmeter&label=Counts&logoColor=blue&color=blue)](https://github.com/mr-pangpang/tvbox-build/releases)
 
-+ [lanzouCloud](https://wwi.lanzoup.com/b0dah3rlc)  Password: `celetor`
++ [lanzouCloud](https://wwi.lanzoup.com/b0dah3rlc#celetor)  Password: `celetor`
 
 ## Credits
 This repo relies on the following third-party projects:
